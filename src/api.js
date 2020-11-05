@@ -6,17 +6,17 @@ const header = {
   cache: 'default'
 }
 
-function getCountry(country){
-  return fetch(`${path}${country}`, header)
-    .then( response => response.json() )
-}
 
-function getCountryState(country, state){
-  return fetch(`${path}${country}/uf/${state}`, header)
-    .then( response => response.json() )
+function getData(state){
+  if(state === 'brazil'){
+    return fetch(`${path}${state}`, header)
+    .then( response => response.json() );
+  }
+  
+  return fetch(`${path}brazil/uf/${state}`, header)
+    .then( response => response.json() );
 }
 
 export default {
-  getCountry,
-  getCountryState
+  getData
 }

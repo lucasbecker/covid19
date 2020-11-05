@@ -1,37 +1,38 @@
+import BrazilFlag from '../../assets/images/brazil.png';
 import AcreFlag from '../../assets/images/AC.png';
 import AlagoasFlag from '../../assets/images/AL.png';
 import AmapaFlag from '../../assets/images/AP.png';
 import AmazonasFlag from '../../assets/images/AM.png';
 import BahiaFlag from '../../assets/images/BA.png';
-
 import CearaFlag from '../../assets/images/CE.png';
 import DistritoFederalFlag from '../../assets/images/DF.png';
 import EspiritoSantoFlag from '../../assets/images/ES.png';
 import GoiasFlag from '../../assets/images/GO.png';
 import MaranhaoFlag from '../../assets/images/MA.png';
-
 import MatoGrossoFlag from '../../assets/images/MT.png';
 import MatoGrossoDoSulFlag from '../../assets/images/MS.png';
 import MinasGeraisFlag from '../../assets/images/MG.png';
 import ParaFlag from '../../assets/images/PA.png';
 import ParaibaFlag from '../../assets/images/PB.png';
-
 import ParanaFlag from '../../assets/images/PR.png';
 import PernambucoFlag from '../../assets/images/PE.png';
 import PiauiFlag from '../../assets/images/PI.png';
 import RioDeJaneiroFlag from '../../assets/images/RJ.png';
 import RioGrandeDoNorteFlag from '../../assets/images/RN.png';
-
 import RioGrandeDoSulFlag from '../../assets/images/RS.png';
 import RondoniaFlag from '../../assets/images/RO.png';
 import RoraimaFlag from '../../assets/images/RR.png';
 import SantaCatarinaFlag from '../../assets/images/SC.png';
 import SaoPauloFlag from '../../assets/images/SP.png';
-
 import SergipeFlag from '../../assets/images/SE.png';
 import TocantinsFlag from '../../assets/images/TO.png';
 
 const STATES = [
+  {
+    label: "Brasil",
+    value: "brazil",
+    flag: BrazilFlag
+  },
   {
     label: "Acre",
     value: "ac",

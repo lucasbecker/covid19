@@ -1,13 +1,12 @@
 import React, {memo} from 'react';
 import { Card, Typography, Button, Select, MenuItem } from '../../../components';
-import COUNTRIES from '../../../commons/constants/countries';
 import STATES from '../../../commons/constants/states';
 import { CardPanelContentStyled, ItemStyled } from './style';
 
 const navigatiorHasShare = navigator.share;
 
-function Panel({ updateAt, onChange, data, country }) {
-  const { cases, deaths, recovered, confirmed } = data;
+function Panel({ updateAt, onChange, data, state }) {
+  const { cases, deaths } = data;
   
   const renderCountries = (item, index) => (
     <MenuItem key={`state-${index}`} value={item.value} >
@@ -19,11 +18,11 @@ function Panel({ updateAt, onChange, data, country }) {
   )
 
   // ARRUMAR TEXTO
-  const textCovid19 = `${country}, ${cases}, ${deaths}, ${recovered}, ${confirmed}`;
+  const textCovid19 = `${state}, ${cases}, ${deaths}`;
 
   const shareInfo = () => {
     navigator.share({
-      title: `Dados do Covid19 - ${country}`,
+      title: `Dados do Covid19 - ${state}`,
       text: textCovid19,
       url: 'http://covid19-brazil.vercel.app'
     })
@@ -54,11 +53,11 @@ function Panel({ updateAt, onChange, data, country }) {
       <CardPanelContentStyled>
         <div>
           <Typography variant="h4" component="h1">COVID-19 Brasil</Typography>
-          <Typography variant="h6" component="p">Dados do Covid-19 pelos estados brasileiros.</Typography>
-          <Typography variant="p" component="span">Atualizado em: {updateAt}</Typography>
+          <Typography variant="h6" component="p">Dados do Covid-19 no Brasil e estados brasileiros.</Typography>
+          <Typography variant="body1" component="span">Atualizado em: {updateAt}</Typography>
           
           <div className="pt-2">
-            <Select onChange={onChange} value={country} >
+            <Select onChange={onChange} value={state} >
               {STATES.map(renderCountries)}
             </Select>
           </div>
