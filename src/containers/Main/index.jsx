@@ -6,21 +6,23 @@ import { ContainerStyled } from './style';
 
 function Main(){
   const [data, setData] = useState({});
-  const [country, setCountry] = useState('brazil');
-  const updateAt = new Date().toLocaleString();
+  const [state, setState] = useState('sp');
+  const updateAt = data.datetime;
 
-  const getCovidData = useCallback( country => {
-    Api.getCountry(country)
-      .then(response => setData(response.data));
+  
+
+  const getCovidData = useCallback( state => {
+    Api.getCountryState('brazil', state)
+      .then(response => setData(response));
   }, []);
 
   useEffect( () => {
-    getCovidData(country)
-  } , [getCovidData, country])
+    getCovidData(state)
+  } , [getCovidData, state])
 
   const handleChange = ({ target }) => {
-    const country = target.value;
-    setCountry(country);
+    const state = target.value;
+    setState(state);
   }
   
   return (
@@ -30,8 +32,7 @@ function Main(){
           data={data} 
           updateAt={updateAt}
           onChange={handleChange}
-          country={country}
-          getCovidData={getCovidData}
+          country={state}
         />
       </div>
       <Board data={data}></Board>

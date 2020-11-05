@@ -14,6 +14,7 @@ export const ValueStyled = styled(Typography)`
 
 export const CardContentStyled = styled(CardContent)`
   border-left: 8px solid ${({color}) => color || '#5d78ff'};
+  padding-right: 30px;
 `;
 
 export const CardPanelContentStyled = styled(CardContent)`
@@ -25,5 +26,7 @@ export const CardPanelContentStyled = styled(CardContent)`
 export const ItemStyled = styled.div`
   display: flex;
   justify-content: space-between;
-  min-width: 150px
+  align-items: center;
+  min-width: 215px;
+  padding-left: 15px
 `;

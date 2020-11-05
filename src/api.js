@@ -11,6 +11,12 @@ function getCountry(country){
     .then( response => response.json() )
 }
 
+function getCountryState(country, state){
+  return fetch(`${path}${country}/uf/${state}`, header)
+    .then( response => response.json() )
+}
+
 export default {
-  getCountry
+  getCountry,
+  getCountryState
 }

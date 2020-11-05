@@ -1,30 +1,31 @@
 import React, {memo} from 'react';
-//import RefreshIcon from '../../../assets/images/refresh.svg';
 import { Card, Typography, Button, Select, MenuItem } from '../../../components';
 import COUNTRIES from '../../../commons/constants/countries';
+import STATES from '../../../commons/constants/states';
 import { CardPanelContentStyled, ItemStyled } from './style';
 
 const navigatiorHasShare = navigator.share;
 
-function Panel({ updateAt, onChange, data, country, getCovidData }) {
+function Panel({ updateAt, onChange, data, country }) {
   const { cases, deaths, recovered, confirmed } = data;
   
-  const renderCountries = (country, index) => (
-    <MenuItem key={`country-${index}`} value={country.value} >
+  const renderCountries = (item, index) => (
+    <MenuItem key={`state-${index}`} value={item.value} >
       <ItemStyled>
-        <div>{country.label}</div>
-        <img src={country.flag} alt={`Bandeira ${country.label}`} />
+        <div>{item.label}</div>
+        <img src={item.flag} alt={`Bandeira ${item.label}`} />
       </ItemStyled>
     </MenuItem>
   )
 
+  // ARRUMAR TEXTO
   const textCovid19 = `${country}, ${cases}, ${deaths}, ${recovered}, ${confirmed}`;
 
   const shareInfo = () => {
     navigator.share({
       title: `Dados do Covid19 - ${country}`,
       text: textCovid19,
-      url: 'http://localhost:3000/'
+      url: 'http://covid19-brazil.vercel.app'
     })
   }
 
@@ -43,7 +44,7 @@ function Panel({ updateAt, onChange, data, country, getCovidData }) {
   const renderCopyButton = (
     <div>
       <Button variant="contained" color="primary" onClick={copyInfo}>
-        Copiar
+        Copiar Dados
       </Button>
     </div>
   )
@@ -52,12 +53,13 @@ function Panel({ updateAt, onChange, data, country, getCovidData }) {
     <Card>
       <CardPanelContentStyled>
         <div>
-          <Typography variant="h5" component="span" color="primary">COVID-19</Typography>
-          <Typography variant="h6" component="span" color="primary">Painel Corona Vírus</Typography>
-          <Typography variant="body2" component="span" color="primary">Atualizado em: {updateAt}</Typography>
+          <Typography variant="h4" component="h1">COVID-19 Brasil</Typography>
+          <Typography variant="h6" component="p">Dados do Covid-19 pelos estados brasileiros.</Typography>
+          <Typography variant="p" component="span">Atualizado em: {updateAt}</Typography>
+          
           <div className="pt-2">
             <Select onChange={onChange} value={country} >
-              {COUNTRIES.map(renderCountries)}
+              {STATES.map(renderCountries)}
             </Select>
           </div>
         </div>
